@@ -36,8 +36,22 @@ function Enunciado() {
 }
 function MostrarGrilla() {
 
-//implementar....
+     var pagina = "./administracion.php";
 
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queMuestro: "MOSTRAR_GRILLA"},
+        async: true
+        })
+        .then(function ok(tabla) {
+            
+            $("#divGrilla").html(tabla);
+        }
+        ,function error(jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.responseText + "\n" + textStatus + "\n" + errorThrown);
+        });
 }
 function CargarFormUsuario() {
 
